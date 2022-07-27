@@ -40,25 +40,26 @@ class TelegramBot():
 
         # self.bot.send_message(chat_id=self.channel_name, text=update.message.text, parse_mode=telegram.ParseMode.HTML)
 
-        file = self.bot.getFile(update.message.photo[-1].file_id)
-        obj = context.bot.get_file(file)
-        obj_url=f'static/media/imgs/{file.file_unique_id}.jpg'
-        obj.download(obj_url)
-        files={'photo':open(f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg', 'rb')}
+        # file = self.bot.getFile(update.message.photo[-1].file_id)
+        # obj = context.bot.get_file(file)
+        # obj_url=f'static/media/imgs/{file.file_unique_id}.jpg'
+        # obj.download(obj_url)
+        # files={'photo':open(f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg', 'rb')}
         a=5
-        msg_text=update.message.text if update.message else ' '
+        msg_text=update.message.text if update.message.text else ''
 
 
-        requests.post(f'https://api.telegram.org/bot{self.bot.token}/sendPhoto?chat_id=@Test_army&caption={msg_text}', files=files)
+        # requests.post(f'https://api.telegram.org/bot{self.bot.token}/sendPhoto?chat_id=@Test_army&caption={msg_text}', files=files)
 
         a=5
-        # self.bot.send_photo(chat_id=self.channel_name,
-        #                          photo=f'https://4822-178-36-10-40.eu.ngrok.io/{obj_url}'
-        #                     )
+        self.bot.send_photo(chat_id=self.channel_name,
+                                 photo=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg'
+                            )
         a=5
 
         # viber_handler.send_text_message(msg_text)
 
+        # viber_handler.send_picture(msg_text, f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/AQADBbwxG7wgCVN-.jpg')
         viber_handler.send_picture(msg_text, f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg')
         # viber_handler.send_picture(msg_text, update.channel_post.link)
 
