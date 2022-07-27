@@ -26,13 +26,13 @@ class TelegramBot():
 
     def pass_message(self, update: Update, context: CallbackContext):
         a=5
-        try:
-            file = self.bot.getFile(update.message.photo[-1].file_id)
-            obj = context.bot.get_file(file)
-            obj_url=f'static/media/{file.file_unique_id}.jpg'
-            obj.download(obj_url)
-        except:
-            obj_url=''
+        # try:
+        file = self.bot.getFile(update.message.photo[-1].file_id)
+        obj = context.bot.get_file(file)
+        obj_url=f'imgs/{file.file_unique_id}.jpg'
+        obj.download(obj_url)
+        # except:
+        #     obj_url=''
 
         a=6
         viber_handler=viber_bot.ViberSender(server_url='https://0c6f-178-36-10-40.eu.ngrok.io',
