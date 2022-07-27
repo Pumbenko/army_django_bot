@@ -8,5 +8,5 @@ from bots.telegram_bot.telegram_bot import TelegramBot
 
 
 def index(request):
-    telegram_bot = TelegramBot(bot_token=credentials.bot_token, channel_name='@Test_army')
+    # telegram_bot = TelegramBot(bot_token=credentials.bot_token, channel_name='@Test_army')
     return HttpResponse("index")
