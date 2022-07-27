@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ls^f=n#+6b+s50-k=b2)ua(zcf7@mnoci2ruf%1h7=iedlgt_e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['django-viber-telegram-bot.herokuapp.com']
 
 
 # Application definition
