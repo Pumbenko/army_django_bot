@@ -33,7 +33,8 @@ class TelegramBot():
         obj_url = f'imgs/{file.file_unique_id}.jpg'
         obj.download(obj_url)
 
-        photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg'
+        # photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg'
+        photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/AQAD9rwxG72tIFN-.jpg'
 
 
         self.bot.send_photo(chat_id=self.channel_name,
