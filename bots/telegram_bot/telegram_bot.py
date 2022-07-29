@@ -18,52 +18,35 @@ class TelegramBot():
         self.channel_name=channel_name
         self.bot = telegram.Bot(token=bot_token)
         self.updater = Updater(bot_token, use_context=True)
-        self.updater.dispatcher.add_handler(MessageHandler(Filters.all, self.pass_message))
+        self.viber_handler=viber_bot.ViberSender(server_url='https://0c6f-178-36-10-40.eu.ngrok.io',
+                                                  auth_token='4f88462e4fb2aba1-1e7d4b58ff9485ae-2cda7320cb96f082',)
+        # self.updater.dispatcher.add_handler(MessageHandler(Filters.all, self.pass_message))
+        self.updater.dispatcher.add_handler(MessageHandler(Filters.text, self.pass_message))
+        self.updater.dispatcher.add_handler(MessageHandler(Filters.photo, self.pass_photo))
 
         self.updater.start_polling()
 
 
-
-    def pass_message(self, update: Update, context: CallbackContext):
-        a=5
-        # try:
+    def pass_photo(self, update: Update, context: CallbackContext):
         file = self.bot.getFile(update.message.photo[-1].file_id)
         obj = context.bot.get_file(file)
-        obj_url=f'imgs/{file.file_unique_id}.jpg'
+        obj_url = f'imgs/{file.file_unique_id}.jpg'
         obj.download(obj_url)
-        # except:
-        #     obj_url=''
 
-        a=6
-        viber_handler=viber_bot.ViberSender(server_url='https://0c6f-178-36-10-40.eu.ngrok.io',
-                                                  auth_token='4f88462e4fb2aba1-1e7d4b58ff9485ae-2cda7320cb96f082',)
-
-        # self.bot.send_message(chat_id=self.channel_name, text=update.message.text, parse_mode=telegram.ParseMode.HTML)
-
-        # file = self.bot.getFile(update.message.photo[-1].file_id)
-        # obj = context.bot.get_file(file)
-        # obj_url=f'static/media/imgs/{file.file_unique_id}.jpg'
-        # obj.download(obj_url)
-        # files={'photo':open(f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg', 'rb')}
-        a=5
-        msg_text=update.message.text if update.message.text else ''
-
-
-        # requests.post(f'https://api.telegram.org/bot{self.bot.token}/sendPhoto?chat_id=@Test_army&caption={msg_text}', files=files)
-
-        a=5
         self.bot.send_photo(chat_id=self.channel_name,
-                                 photo=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg'
+                                 photo=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/AQADH7cxGwiY4FJ9.jpg'
+                                 # photo=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg'
                             )
-        a=5
 
-        # viber_handler.send_text_message(msg_text)
+        msg_text = update.message.text if update.message.text else ''
+        self.viber_handler.send_picture(msg_text,
+                                   f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/AQADBbwxG7wgCVN-.jpg')
 
-        # viber_handler.send_picture(msg_text, f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/AQADBbwxG7wgCVN-.jpg')
-        viber_handler.send_picture(msg_text, f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg')
-        # viber_handler.send_picture(msg_text, update.channel_post.link)
 
-        # update.message.reply_text(f'Your message has been successfully sent to desired channel! {update.message.text}')
+    def pass_message(self, update: Update, context: CallbackContext):
+        msg_text=update.message.text if update.message.text else ''
+        self.viber_handler.send_text_message(msg_text)
+
 
 
 
