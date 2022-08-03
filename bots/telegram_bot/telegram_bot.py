@@ -28,7 +28,7 @@ class TelegramBot():
 
 
     def pass_photo(self, update: Update, context: CallbackContext):
-        file = self.bot.getFile(update.message.photo[-1].file_id)
+        file = self.bot.getFile(update.message.photo[-1])
         obj = context.bot.get_file(file)
         # obj_url = f'imgs/{file.file_unique_id}.jpg'
         obj_url = f'imgs/temp.jpg'
