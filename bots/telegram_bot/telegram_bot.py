@@ -36,13 +36,14 @@ class TelegramBot():
 
         # photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/{file.file_unique_id}.jpg'
         photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/imgs/temp.jpg'
+        msg_text = update.message.text if update.message.text else ''
 
         a=5
         self.bot.send_photo(chat_id=self.channel_name,
-                                 photo=photo_to_send
+                            photo=photo_to_send,
+                            caption=msg_text
                             )
 
-        msg_text = update.message.text if update.message.text else ''
         self.viber_handler.send_picture(msg_text,
                                    photo_to_send)
 
