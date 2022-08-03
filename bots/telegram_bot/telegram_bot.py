@@ -43,10 +43,10 @@ class TelegramBot():
         msg_text = update.message.text if update.message.text else ''
 
         a=5
-        self.bot.send_photo(chat_id=self.channel_name,
-                            photo=photo_to_send,
-                            caption=msg_text
-                            )
+        # self.bot.send_photo(chat_id=self.channel_name,
+        #                     photo=photo_to_send,
+        #                     caption=msg_text
+        #                     )
 
         self.viber_handler.send_picture(msg_text,
                                    photo_to_send)
