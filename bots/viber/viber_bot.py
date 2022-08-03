@@ -50,7 +50,7 @@ class ViberSender():
 			# "media": 		file_name #os.path.join(os.getcwd(), 'media', file_name),
 			}
 		aa=requests.post(url='https://chatapi.viber.com/pa/post', data=json.dumps(data_to_send), headers=self.headers)
-		print(aa)
+		print(aa.content)
 		a=5
 
 
