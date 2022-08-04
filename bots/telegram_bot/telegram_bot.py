@@ -52,7 +52,7 @@ class TelegramBot():
         self.viber_handler.send_picture(msg_text,
                                    photo_to_send)
 
-        # os.remove(obj_url)
+        os.remove(obj_url)
 
 
     def pass_message(self, update: Update, context: CallbackContext):
