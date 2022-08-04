@@ -35,7 +35,7 @@ class TelegramBot():
         file = self.bot.getFile(update.message.photo[-1])
         obj = context.bot.get_file(file)
         # obj_url = f'imgs/{file.file_unique_id}.jpg'
-        obj_url = f'imgs/img.jpeg'
+        obj_url = f'imgs/temp.jpeg'
         obj.download(obj_url)
 
         photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/{obj_url}'
