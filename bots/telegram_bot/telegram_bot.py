@@ -29,9 +29,9 @@ class TelegramBot():
 
 
     def pass_photo(self, update: Update, context: CallbackContext):
-        files = glob.glob('imgs/*')
-        for f in files:
-            os.remove(f)
+        # files = glob.glob('imgs/*')
+        # for f in files:
+        #     os.remove(f)
         file = self.bot.getFile(update.message.photo[-1])
         obj = context.bot.get_file(file)
         # obj_url = f'imgs/{file.file_unique_id}.jpg'
@@ -52,7 +52,7 @@ class TelegramBot():
         self.viber_handler.send_picture(msg_text,
                                    photo_to_send)
 
-        # os.remove(obj_url)
+        os.remove(obj_url)
 
 
     def pass_message(self, update: Update, context: CallbackContext):
