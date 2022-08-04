@@ -29,30 +29,33 @@ class TelegramBot():
 
 
     def pass_photo(self, update: Update, context: CallbackContext):
-        # files = glob.glob('imgs/*')
-        # for f in files:
-        #     os.remove(f)
+        files = glob.glob('imgs/*')
+        for f in files:
+            os.remove(f)
         file = self.bot.getFile(update.message.photo[-1])
         obj = context.bot.get_file(file)
         # obj_url = f'imgs/{file.file_unique_id}.jpg'
-        obj_url = f'imgs/img.jpeg'
-        obj.download(obj_url)
+        obj_url_viber = f'imgs/img.jpeg'
+        obj_url_telegram = f'imgs/img.jpg'
+        obj.download(obj_url_viber)
+        obj.download(obj_url_telegram)
 
-        photo_to_send=f'https://django-viber-telegram-bot.herokuapp.com/media/{obj_url}'
+        photo_to_send_telegram=f'https://django-viber-telegram-bot.herokuapp.com/media/{obj_url_telegram}'
+        photo_to_send_viber=f'https://django-viber-telegram-bot.herokuapp.com/media/{obj_url_viber}'
         # photo_to_send='https://django-viber-telegram-bot.herokuapp.com/media/imgs/AQADI7kxGyFxWFN-.jpg'
         # photo_to_send='https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8cGhvdG9ncmFwaHl8ZW58MHx8MHx8&w=1000&q=80'
         msg_text = update.message.text if update.message.text else ''
 
         a=5
         self.bot.send_photo(chat_id=self.channel_name,
-                            photo=photo_to_send,
+                            photo=photo_to_send_telegram,
                             caption=msg_text
                             )
 
         self.viber_handler.send_picture(msg_text,
-                                   photo_to_send)
+                                   photo_to_send_viber)
 
-        os.remove(obj_url)
+        # os.remove(obj_url)
 
 
     def pass_message(self, update: Update, context: CallbackContext):
